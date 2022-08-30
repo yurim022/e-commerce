@@ -23,6 +23,12 @@ spring:
             preLogger: true
             postLogger: true
       routes:
+        - id: user-service
+          uri: lb://USER-SERVICE #using discovery-service
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - CustomFilter
         - id: first-service
           uri: lb://YURIM-FIRST-SERVICE #using discovery-service
           predicates:

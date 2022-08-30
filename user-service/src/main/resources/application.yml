@@ -19,7 +19,9 @@ spring:
 
 eureka:
   instance:
+#    prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    hostname: localhost #if your os is window, you must need this option
   client:
     fetch-registry: true
     register-with-eureka: true
