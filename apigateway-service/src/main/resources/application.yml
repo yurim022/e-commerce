@@ -23,6 +23,18 @@ spring:
             preLogger: true
             postLogger: true
       routes:
+        - id: order-service
+          uri: lb://ORDER-SERVICE #using discovery-service
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - CustomFilter
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE #using discovery-service
+          predicates:
+            - Path=/catalog-service/**
+          filters:
+            - CustomFilter
         - id: user-service
           uri: lb://USER-SERVICE #using discovery-service
           predicates:
