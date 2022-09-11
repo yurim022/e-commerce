@@ -23,7 +23,7 @@ spring:
             preLogger: true
             postLogger: true
       routes:
-        - id: order-service
+        - id: order-service # 'id' used to distinguish it from other resources
           uri: lb://ORDER-SERVICE #using discovery-service
           predicates:
             - Path=/order-service/**
@@ -35,30 +35,36 @@ spring:
             - Path=/catalog-service/**
           filters:
             - CustomFilter
+#        - id: user-service
+#          uri: lb://USER-SERVICE #using discovery-service
+#          predicates:
+#            - Path=/user-service/**
+#          filters:
+#            - CustomFilter
+
         - id: user-service
           uri: lb://USER-SERVICE #using discovery-service
           predicates:
+            - Path=/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie #The header value is deleted to recognize the data value delivered to the post as new data each time.
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/users
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
             - Path=/user-service/**
+            - Method=GET
           filters:
-            - CustomFilter
-        - id: first-service
-          uri: lb://YURIM-FIRST-SERVICE #using discovery-service
-          predicates:
-            - Path=/first-service/**
-          filters:
-            - CustomFilter
-#            - AddRequestHeader=first-request, first-request-header2
-#            - AddResponseHeader=first-response, first-response-header2
-        - id: second-service
-          uri: lb://YURIM-SECOND-SERVICE
-          predicates:
-            - Path=/second-service/**
-          filters:
-            - name: CustomFilter
-            - name: LoggingFilter
-              args:
-                baseMessage: Hi, there
-                preLogger: true
-                postLogger: true
-#            - AddRequestHeader=second-request, second-request-header2
-#            - AddResponseHeader=second-response, second-response-header2
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
