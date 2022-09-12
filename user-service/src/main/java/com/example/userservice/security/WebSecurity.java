@@ -31,7 +31,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
 
+
         http.authorizeRequests()
+                .antMatchers("/actuator/**").permitAll()
                 .antMatchers("/users/**").permitAll()
                 .antMatchers("/login/**").permitAll() //원래는 hasIpAddress()로 걸러줘야하는데 이상하게 동작안되서 임시로!
                 .and()

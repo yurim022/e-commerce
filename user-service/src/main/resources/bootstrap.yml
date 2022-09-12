@@ -1,0 +1,11 @@
+## spring cloud server에서 불러올때 application.yml 보다 우선순위 높음
+## bootstrap 파일에 등록된 spring-cloud 설정정보 먼저 불러옴
+
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+      name: ecommerce
+#  profiles:
+#    active: dev
+
