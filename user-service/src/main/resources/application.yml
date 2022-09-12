@@ -28,9 +28,16 @@ eureka:
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
 
+
 greeting:
   message: Welcome to the Yurim's Simple E-commerce.
+
 
 logging:
   level:
     com.example.userservice: DEBUG
+
+
+token:
+  expiration_time: 86400000 # 60*60*24*1000 하루
+  secret: yurim-token
