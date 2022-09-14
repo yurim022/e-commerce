@@ -14,6 +14,13 @@ eureka:
 spring:
   application:
     name: apigateway-service
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: test1234
+
   cloud:
     gateway:
       default-filters:
@@ -22,6 +29,7 @@ spring:
             baseMessage: Spring Cloud Gateway Global Filter
             preLogger: true
             postLogger: true
+
       routes:
         - id: order-service # 'id' used to distinguish it from other resources
           uri: lb://ORDER-SERVICE #using discovery-service

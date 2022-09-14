@@ -5,7 +5,7 @@ spring:
   cloud:
     config:
       uri: http://127.0.0.1:8888
-      name: ecommerce
+      name: config-service #config service name (retrieve default application.yml)
 #  profiles:
 #    active: dev
 
