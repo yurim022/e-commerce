@@ -1,9 +1,12 @@
 package com.example.userservice.service;
 
+import com.example.userservice.client.OrderServiceClient;
 import com.example.userservice.dto.UserDto;
 import com.example.userservice.jpa.UserEntity;
 import com.example.userservice.jpa.UserRepository;
 import com.example.userservice.vo.ResponseOrder;
+import feign.FeignException;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +26,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
     UserRepository userRepository;
     BCryptPasswordEncoder passwordEncoder;
-
     Environment env;
-
     RestTemplate restTemplate;
+    OrderServiceClient orderServiceClient;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -46,12 +49,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder,
-                           Environment env, RestTemplate restTemplate) {
+    public UserServiceImpl(UserRepository userRepository,
+                           BCryptPasswordEncoder passwordEncoder,
+                           Environment env,
+                           RestTemplate restTemplate,
+                           OrderServiceClient orderServiceClient) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.env = env;
         this.restTemplate = restTemplate;
+        this.orderServiceClient = orderServiceClient;
     }
 
     @Override
@@ -80,12 +87,22 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException("user not found");
         }
 
-        String orderUrl = String.format(env.getProperty("order-service.url"), userId);
-        List<ResponseOrder> orders = restTemplate.exchange(orderUrl, HttpMethod.GET, null,
-                new ParameterizedTypeReference<List<ResponseOrder>>() {
-        }).getBody();
-        userDto.setOrders(orders);
+        /* Restemplate */
+//        String orderUrl = String.format(env.getProperty("order-service.url"), userId);
+//        List<ResponseOrder> orders = restTemplate.exchange(orderUrl, HttpMethod.GET, null,
+//                new ParameterizedTypeReference<List<ResponseOrder>>() {
+//        }).getBody();
 
+        /* Feign client */
+//        try {
+//            List<ResponseOrder> orders = orderServiceClient.getOrders(userId);
+//            userDto.setOrders(orders);
+//        } catch (FeignException e) {
+//            log.error(e.getMessage());
+//        }
+
+        List<ResponseOrder> orders = orderServiceClient.getOrders(userId);
+        userDto.setOrders(orders);
         return userDto;
     }
 
