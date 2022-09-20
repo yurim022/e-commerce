@@ -5,7 +5,7 @@ spring:
   cloud:
     config:
       uri: http://127.0.0.1:8888
-      name: config-service #config service name (retrieve default application.yml)
+      name: user-service #config service name (retrieve default application.yml)
 #  profiles:
 #    active: dev
 
