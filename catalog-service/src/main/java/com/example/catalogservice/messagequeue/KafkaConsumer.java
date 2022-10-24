@@ -1,5 +1,6 @@
 package com.example.catalogservice.messagequeue;
 
+import com.example.catalogservice.common.Constants;
 import com.example.catalogservice.entity.CatalogEntity;
 import com.example.catalogservice.jpa.CatalogRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,7 +26,7 @@ public class KafkaConsumer {
     }
 
     /* order service 에서 주문하면 재고 줄도록 topic consume */
-    @KafkaListener(topics = "example-catalog-topic")
+    @KafkaListener(topics = Constants.KAFKA_CATALOG_TOPIC)
     public void updateQty(String kafkaMessage) {
         log.info("Kafka Message: -> " + kafkaMessage);
 

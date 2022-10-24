@@ -9,8 +9,8 @@ spring:
   rabbitmq:
     host: 127.0.0.1
     port: 5672
-    username: admin
-    password: test1234
+    username: guest
+    password: guest
 
   profiles:
     active: native
@@ -19,7 +19,7 @@ spring:
     config:
       server:
         native:
-          search-locations: file:///C:\\develop\\native-file-repo
+          search-locations: file:///Users/lena/work/native-file-repo
         git:
 #          uri: file:///C:\\develop\\git-local-repo
           uri: https://github.com/yurim022/spring-cloud-config.git

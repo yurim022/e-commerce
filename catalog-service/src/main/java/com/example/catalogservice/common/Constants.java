@@ -1,4 +1,4 @@
-package com.example.orderservice.common;
+package com.example.catalogservice.common;
 
 public class Constants {
 
