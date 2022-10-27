@@ -1,6 +1,6 @@
 # e-commerce
 
-### 개발환경
+## 개발환경
 
 * Kafka
 * Kafka connect
@@ -11,7 +11,7 @@
 
 </br>
 
-### 카프카 실행 명령어
+## 카프카 실행 명령어
 
 zookeeper 먼저 실행후, 30초정도 대기한 뒤 카프카를 띄워준다.  
 
@@ -81,3 +81,41 @@ kafka connect는 별도로 설치 및 실행해주어야 한다. db에 맞는 jd
 ./bin/connect-distributed ./etc/kafka/connect-distributed.properties
 ```
 
+
+
+## MariaDB 실행
+
+mac 환경에서 brew로 간편하게 설치할 수 있다. 
+
+#### 설치
+
+```
+brew install mariadb
+```
+
+#### 기동
+
+```
+brew services start mariadb
+```
+
+#### 기동 확인
+
+```
+brew services
+```
+
+#### 접속
+
+```
+mysql -uroot
+```
+이 때 Access denied 권한 에러가 난다면
+
+```
+sudo mysql -u root
+```
+로 접속한다. 이때 비밀번호는 root 비밀번호가 아니라, sudo 계정의 비밀번호다. 
+
+</br>ㅈㅓㅂ속하
+</br>
