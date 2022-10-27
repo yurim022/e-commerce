@@ -81,7 +81,7 @@ kafka connect는 별도로 설치 및 실행해주어야 한다. db에 맞는 jd
 ./bin/connect-distributed ./etc/kafka/connect-distributed.properties
 ```
 
-
+</br>
 
 ## MariaDB 실행
 
@@ -117,5 +117,5 @@ sudo mysql -u root
 ```
 로 접속한다. 이때 비밀번호는 root 비밀번호가 아니라, sudo 계정의 비밀번호다. 
 
-</br>ㅈㅓㅂ속하
+
 </br>
