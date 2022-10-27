@@ -44,6 +44,15 @@ $KAFKA_HOME/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 $KAFKA_HOME/bin/kafka-topics.sh --describe --topic topic-name --bootstrap-server localhost:9092
 ```
 
+#### Topic 삭제
+
+예전에는 `--zookeeper` 옵션을 줘서 삭제를 해줬지만 이는 deprecated 된 옵션이다.    
+zookeeper 쉘이 아닌, kafka-topics를  사용해서 `--bootstrap-server` 옵션으로 진행해줘야 한다. 
+
+```
+$KAFKA_HOME/bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete topic-name
+```
+
 </br>
 
 ### Producer/Consumer 테스트
@@ -72,8 +81,3 @@ kafka connect는 별도로 설치 및 실행해주어야 한다. db에 맞는 jd
 ./bin/connect-distributed ./etc/kafka/connect-distributed.properties
 ```
 
-#### Topic 목록 확인
-
-```
-./bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
-```
