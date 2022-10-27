@@ -117,5 +117,12 @@ sudo mysql -u root
 ```
 로 접속한다. 이때 비밀번호는 root 비밀번호가 아니라, sudo 계정의 비밀번호다. 
 
+<img width="645" alt="image" src="https://user-images.githubusercontent.com/45115557/198336940-d524a7a1-f49f-4db3-b820-dd7aabf00db5.png">
+
+kafka sink-connector를 통해 order-service에서 orders topic에 등록한 데이터를 mariadb에 넣을 수 있다. 이로써 여러개의 분산처리된 order-service의 db접근 데이터를 동기화 할 수 있다. 
+
+<img width="644" alt="image" src="https://user-images.githubusercontent.com/45115557/198337465-05e1c9db-4526-4c2c-a82d-08989e47a1b8.png">
+
+위는 connector 로그 캡쳐화면이다. 
 
 </br>
