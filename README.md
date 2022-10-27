@@ -69,11 +69,11 @@ $KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --to
 kafka connect는 별도로 설치 및 실행해주어야 한다. db에 맞는 jdbc connector도 설정해주는 것 잊지 말자!
 
 ```
-.\bin\connect-distributed .\etc\kafka\connect-distributed.properties
+./bin/connect-distributed ./etc/kafka/connect-distributed.properties
 ```
 
 #### Topic 목록 확인
 
 ```
-.\bin\kafka-topics.sh --bootstrap-server localhost:9092 --list
+./bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 ```
