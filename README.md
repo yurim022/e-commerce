@@ -15,6 +15,12 @@
 
 </br>
 
+## 서비스 구성
+
+<img width="1210" alt="image" src="https://user-images.githubusercontent.com/45115557/202171646-de94fc92-64ea-42d1-9b32-a985412c3659.png">
+
+</br>
+
 ## 카프카 실행 명령어
 
 zookeeper 먼저 실행후, 30초정도 대기한 뒤 카프카를 띄워준다.  
