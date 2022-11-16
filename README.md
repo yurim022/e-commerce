@@ -8,6 +8,7 @@
 * Java11
 * Spring Cloud
 * JPA
+* MariaDB
 
 </br>
 
