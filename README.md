@@ -5,9 +5,19 @@
 * Kafka
 * Kafka connect
 * Rabbit MQ
+* Zipkin
+* Grafana
+* Prometheus
 * Java11
 * Spring Cloud
 * JPA
+* MariaDB
+
+</br>
+
+## 서비스 구성
+
+<img width="1210" alt="image" src="https://user-images.githubusercontent.com/45115557/202171646-de94fc92-64ea-42d1-9b32-a985412c3659.png">
 
 </br>
 
