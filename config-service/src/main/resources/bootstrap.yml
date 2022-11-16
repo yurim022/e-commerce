@@ -1,6 +1,6 @@
 encrypt:
 #  key: abcdefghijklmnopqrstuvwxyz0123456789 #symmetric key
   key-store: #asymmetric
-    location: file:///C:\\develop\\e-commerce\\keystore\\apiEncryptionKey.jks #private key
+    location: file:/apiEncryptionKey.jks #private key
     password: test1234
     alias: apiEncryptionKey
