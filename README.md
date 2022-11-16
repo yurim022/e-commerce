@@ -5,6 +5,9 @@
 * Kafka
 * Kafka connect
 * Rabbit MQ
+* Zipkin
+* Grafana
+* Prometheus
 * Java11
 * Spring Cloud
 * JPA
